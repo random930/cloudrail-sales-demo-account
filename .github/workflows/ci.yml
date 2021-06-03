@@ -1,0 +1,41 @@
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: v0.15.4
+      
+      - run: terraform init
+        working-directory: terraform
+      - run: terraform plan -out=plan.out
+        working-directory: terraform
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_ACCESS_KEY }}
+
+      - uses: ./
+        with:
+          tf-plan-file: plan.out
+          cloudrail-api-key: ${{ secrets.CLOUDRAIL_API_KEY }}
+          cloud-account-id: 785332807099
+          working-directory: terraform
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        # Remember that if issues are found, Cloudrail return non-zero exit code, so the if: always()
+        # is needed to ensure the SARIF file is uploaded
+        if: always() 
+        with:
+          sarif_file: test/cloudrail_results.sarif
