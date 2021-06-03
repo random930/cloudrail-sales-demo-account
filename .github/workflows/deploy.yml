@@ -30,7 +30,7 @@ jobs:
           working-directory: terraform
 
       - run: |
-          terraform apply plan.out -auto-approve
+          terraform apply plan.out
         working-directory: terraform
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY_ID }}
