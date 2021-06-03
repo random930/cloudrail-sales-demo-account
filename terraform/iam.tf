@@ -11,7 +11,7 @@ resource "aws_iam_group" "billing" {
 
 resource "aws_iam_group_policy_attachment" "billing_policy_attachment" {
   group       = aws_iam_group.billing.name
-  policy_arn = "Billing"
+  policy_arn = "arn:aws:iam::aws:policy/job-function/Billing"
 }
 
 module "dc_sands" {
@@ -31,7 +31,7 @@ module "dc_sands" {
 # Tech demo users
 resource "aws_iam_group_policy_attachment" "tech_demo_policy_attachment" {
   group       = aws_iam_group.tech_demo.name
-  policy_arn = "AdministratorAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
 resource "aws_iam_group" "tech_demo" {
