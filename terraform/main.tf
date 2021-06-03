@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
  # You cannot create a new backend by simply defining this and then
  # immediately proceeding to "terraform apply". The S3 backend must
  # be bootstrapped according to the simple yet essential procedure in
