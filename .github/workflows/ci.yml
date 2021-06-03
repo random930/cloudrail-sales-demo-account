@@ -25,7 +25,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_AWS_SECRET_ACCESS_KEY }}
 
-      - uses: ./
+      - uses: indeni/cloudrail-run-ga@v1.2
         with:
           tf-plan-file: plan.out
           cloudrail-api-key: ${{ secrets.CLOUDRAIL_API_KEY }}
