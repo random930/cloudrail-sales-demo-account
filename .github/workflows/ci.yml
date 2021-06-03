@@ -17,9 +17,9 @@ jobs:
         with:
           terraform_version: v0.15.4
       
-      - run: terraform init
-        working-directory: terraform
-      - run: terraform plan -out=plan.out
+      - run: |
+          terraform init
+          terraform plan -out=plan.out
         working-directory: terraform
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.TF_AWS_ACCESS_KEY_ID }}
