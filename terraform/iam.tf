@@ -20,7 +20,7 @@ module "dc_sands" {
   name      = "dc_sands"
   user_name = "dc_sands"
   pgp_key    = "keybase:cloudrail_sales"
-  groups    = ["/humans/billing"]
+  groups    = ["billing"]
 
   tags = {
     "department" = "g_and_a"
@@ -45,7 +45,7 @@ module "stephen_archer" {
   name      = "stephen_archer"
   user_name = "stephen_archer"
   pgp_key    = "keybase:cloudrail_sales"
-  groups    = ["/humans/tech_demo"]
+  groups    = ["tech_demo"]
 
   tags = {
     "department" = "sales"
@@ -58,7 +58,7 @@ module "charles_kim" {
   name      = "charles_kim"
   user_name = "charles_kim"
   pgp_key    = "keybase:cloudrail_sales"
-  groups    = ["/humans/tech_demo"]
+  groups    = ["tech_demo"]
 
   tags = {
     "department" = "sales"
@@ -71,7 +71,7 @@ module "yoni_leitersdorf" {
   name      = "yoni_leitersdorf"
   user_name = "yoni_leitersdorf"
   pgp_key    = "keybase:cloudrail_sales"
-  groups    = ["/humans/tech_demo"]
+  groups    = ["tech_demo"]
 
   tags = {
     "department" = "sales"
